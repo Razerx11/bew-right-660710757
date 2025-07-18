@@ -42,6 +42,7 @@ services:
       mc mb myminio/bronze --ignore-existing;
       mc mb myminio/silver --ignore-existing;
       mc mb myminio/gold --ignore-existing;
+      
       mc mb myminio/models --ignore-existing;
       exit 0;
       "
