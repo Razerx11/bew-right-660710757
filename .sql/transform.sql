@@ -5,21 +5,21 @@ FROM read_csv_auto('data_csv/sales.csv');
 -- 1) Normalize types
 CREATE OR REPLACE TABLE daily_sales AS
 SELECT CAST(date AS DATE) AS date,
-  region,
-  product,
-  CAST(amount AS DOUBLE) AS amount
+    region,
+    product,
+    CAST(amount AS DOUBLE) AS amount
 FROM sales;
 -- 2) Aggregate: total by region
 CREATE OR REPLACE TABLE agg_region AS
 SELECT region,
-  SUM(amount) AS total_amount
+    SUM(amount) AS total_amount
 FROM daily_sales
 GROUP BY region
 ORDER BY region;
 -- 3) Aggregate: total by product
 CREATE OR REPLACE TABLE agg_product AS
 SELECT product,
-  SUM(amount) AS total_amount
+    SUM(amount) AS total_amount
 FROM daily_sales
 GROUP BY product
 ORDER BY product;
